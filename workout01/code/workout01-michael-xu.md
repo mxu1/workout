@@ -169,3 +169,5 @@ Lets first break down the 2 pointers. Andre Iguodala made a shocking 63.8% of al
 <p>
 Now lets break down the 3 pointers. Klay Thompson falls in the front with 42.4% followed by Stephen Curry (40.8%), Kevin Durant (38.6%), Andre Iguodala (36.0%), and Draymon Green (31.9%). There is a change on who does better than average this time. Klay Thompson and Stephen Curry beat the percentage of 39.5%.
 </p>
+<p>
+The thing to take away is that these five players have been outstanding, and great in their own way. If you want the player with the best 2 pt percent go for Andre Igudala. If you want the best 3 pt percent player go for Klay Thompson. If you want the best overall scoring percent go for Kevin Durant. If you want the player that made the most points go for Stephen Curry. The only player that stands out is Draymon Green, but not in a good way. In terms of scoring he has the lowest percent of making the basket accross all fields. He also has the second lowest attempts and second lowest made baskets accross all fields. To find the most efficent player one would have to define what they consider to be efficent.
