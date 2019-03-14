@@ -1,0 +1,51 @@
+---
+title: "Data dictionary"
+author: "Michael Xu"
+date: "3/12/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- team_name: The team the player plays for when the shot was attempted
+- game_date:  What date the game was
+- period: The period for when the shot was attempted
+- minutes_remaining: minutes remaining in the period for when the shot was attempted
+- seconds_remaining: seconds remaining in the period for when the shot was attempted
+- shot_made_flag: was the shot made or not (y for yes and n for no)
+- action_type: How did the player attempt to make the shot? I have listed the type of actions below.
+  - Cutting Dunk Shot
+  - Cutting Finger Roll Layup Shot
+  - Driving Dunk Shot
+  - Driving Finger Roll Layup Shot
+  - Driving Layup Shot
+  - Driving Reverse Dunk Shot
+  - Driving Reverse Layup Shot
+  - Dunk Shot
+  - Alleu Oop Layup shot
+  - Alley Oop Dunk Shot
+  - Hook Shot
+  - Floating Jump shot
+  - Finger Roller Layup Shot
+  - Jump Bank Shot
+  - Jump Shot
+  - Turnaround Jump Shot
+  - Turnaround Fadeaway shot
+  - Tip Layup Shot
+  - Tip Dunk Shot
+  - Step Back Jump shot
+  - Running Reverse Layup Shot
+  - Running Layup Shot
+  - Running Finger Roll Layup Shot	
+  -	Running Dunk Shot
+  - Running Alley Oop Dunk Shot
+  -	Putback Layup Shot
+  - Pullup Jump shot
+  - Layup Shot	
+- shot_type: Can be 2 or 3 points 2PT Field Goal and 3PT Field Goal respectively
+- shot_distance: How far away are they from the basket? (in Feet)
+- opponent: The opposing team for when the shot was attempted.
+- x: The x position of the player when shot was attempted measured in inches 
+- y: The y position of the player when shot was attempted from the center of the court

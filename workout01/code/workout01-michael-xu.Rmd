@@ -1,0 +1,61 @@
+---
+title: "Workout01-michael-xu"
+author: "Michael Xu"
+date: "3/12/2019"
+output: github_document
+---
+###Including packages
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+#Effective Shooting Percentage
+```{r}
+gsw <- read.table("../data/shots-data.csv", header=TRUE, sep=",")
+# group_by(gsw, name, sum(shot_made_flag))
+
+summarise(group_by(gsw, name), Total_2pt_Field_Goal = sum(shot_type == "2PT Field Goal"), made = sum(shot_made_flag[shot_type == "2PT Field Goal"] == "shot_yes"), perc_made = made/Total_2pt_Field_Goal)
+
+summarise(group_by(gsw, name), Total_3pt_Field_Goal = sum(shot_type == "3PT Field Goal"), made = sum(shot_made_flag[shot_type == "3PT Field Goal"] == "shot_yes"), perc_made = made/Total_3pt_Field_Goal)
+
+summarise(group_by(gsw, name), Total_Shots = length(shot_made_flag), made = sum(shot_made_flag == "shot_yes"), perc_made = made/Total_Shots)
+
+```
+
+#Report
+The Golden State Warriors have been dominating the National Basketball Association (NBA) in the recent years. The team has many big name players like Kevin Durant, Stephan Curry, Andre Iguodala, Klay Thompson, Draymond Green, and Stephen Curry. It is hard to find the most efficient player with a team this talented. In the 2015-2016 season Stephen Curry was named the Most Valuable Player (MVP) for the season, and in the 2016-2017 Kevin Durant was named MVP for the final. In the 2016 season who do we think was the efficient player? Was it Kevin Durant, Stephen Curry, or maybe another player that has been overshadowed?
+
+```{r}
+summarise(group_by(gsw, team_name), Total_2pt_Field_Goal = sum(shot_type == "2PT Field Goal"), made = sum(shot_made_flag[shot_type == "2PT Field Goal"] == "shot_yes"), perc_made = made/Total_2pt_Field_Goal)
+
+summarise(group_by(gsw, team_name), Total_3pt_Field_Goal = sum(shot_type == "3PT Field Goal"), made = sum(shot_made_flag[shot_type == "3PT Field Goal"] == "shot_yes"), perc_made = made/Total_3pt_Field_Goal)
+
+summarise(group_by(gsw, team_name), Total_Shots = length(shot_made_flag), made = sum(shot_made_flag == "shot_yes"), perc_made = made/Total_Shots)
+
+```
+
+From the statistics we can clearly see that these 5 players combined had a total of 4334 shots. They made a staggering 2091 for percent of 48.2% success rate. Let us break this down a bit more and look at their total 2pt and 3pt attempt. We can see that they attempted a total of 2402 2pt and made 1328 of them leading them to a 55.3% success rate for their 2 pts. By looking at the 3 pts we can see that there is about 500 shots less attempted than the 2pts. There was 1932 3pts attempted with 763 success for a 39.5% rate.
+
+```{r out.width='80%', echo=FALSE, fig.align='center'}
+knitr::include_graphics("../images/gsw-shot-charts.png")
+```
+
+We will break down the five starting players to see if there is a single indivdual that stands out offensively. From the photo above we can clearly see that Stephen Curry and Klay Thompson have the most shots around the 3 point line. We can also see that Andre Iguodala seems to have attemped the least amount of shots.
+
+```{r}
+gsw <- read.table("../data/shots-data.csv", header=TRUE, sep=",")
+# group_by(gsw, name, sum(shot_made_flag))
+
+summarise(group_by(gsw, name), Total_2pt_Field_Goal = sum(shot_type == "2PT Field Goal"), made = sum(shot_made_flag[shot_type == "2PT Field Goal"] == "shot_yes"), perc_made = made/Total_2pt_Field_Goal)
+
+summarise(group_by(gsw, name), Total_3pt_Field_Goal = sum(shot_type == "3PT Field Goal"), made = sum(shot_made_flag[shot_type == "3PT Field Goal"] == "shot_yes"), perc_made = made/Total_3pt_Field_Goal)
+
+summarise(group_by(gsw, name), Total_Shots = length(shot_made_flag), made = sum(shot_made_flag == "shot_yes"), perc_made = made/Total_Shots)
+
+summarise(group_by(gsw, team_name), Total_Shots = length(shot_made_flag), made = sum(shot_made_flag == "shot_yes"), perc_made = made/Total_Shots)
+```
+
+<p>The statistics are in Kevin Durant leads the the total percent made (54.1%), followed by Andre Iguodala (51.8%), Klay Thompson (47.1%), Stephen Curry (46.7), and Draymon Green (42.4%). Only Kevin Durant and Andre Igudala did better than the 5 Golden State Warriors average percent of (48.2%). However there's a lot more information to be uncovered if we dive a little but deeper.</p>
+<p>Lets first break down the 2 pointers. Andre Iguodala made a shocking 63.8% of all his 2pts, however he only attemped 210 shots. To put that into perspective, that is less than 1/3 of what Kevin Durant and Klay Thompson attempted. The next shooter is Kevin Durant (60.7%), Stephen Curry (54.0%), Klay Thompson (51.4%), and Drayon Green(49.4%). Once again both Andre Inguodala and Kevin Durant do better than the average of 55.3%.</p>
+<p>Now lets break down the 3 pointers. Klay Thompson falls in the front with 42.4% followed by Stephen Curry (40.8%), Kevin Durant (38.6%), Andre Iguodala (36.0%), and Draymon Green (31.9%). There is a change on who does better than average this time. Klay Thompson and Stephen Curry beat the percentage of 39.5%.</p>
