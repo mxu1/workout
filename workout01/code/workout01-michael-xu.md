@@ -170,4 +170,34 @@ Lets first break down the 2 pointers. Andre Iguodala made a shocking 63.8% of al
 Now lets break down the 3 pointers. Klay Thompson falls in the front with 42.4% followed by Stephen Curry (40.8%), Kevin Durant (38.6%), Andre Iguodala (36.0%), and Draymon Green (31.9%). There is a change on who does better than average this time. Klay Thompson and Stephen Curry beat the percentage of 39.5%.
 </p>
 <p>
+We can also break down efficiency by calculating average points score per shot attempted
+</p>
+``` r
+summarise(group_by(gsw, team_name), Total_Shots = length(shot_made_flag), Total_Points_Made =
+sum(shot_made_flag[shot_type == "3PT Field Goal"] == "shot_yes") * 3 + sum(shot_made_flag[shot_type == "2PT Field Goal"] == "shot_yes") * 2, Points_per_Shot = Total_Points_Made/Total_Shots)
+```
+
+    ## # A tibble: 1 x 4
+    ##   team_name             Total_Shots Total_Points_Made Points_per_Shot
+    ##   <fct>                       <int>             <dbl>           <dbl>
+    ## 1 Golden State Warriors        4334              4945            1.14
+
+``` r
+summarise(group_by(gsw, name), Total_Shots = length(shot_made_flag), Total_Points_Made =
+sum(shot_made_flag[shot_type == "3PT Field Goal"] == "shot_yes") * 3 + sum(shot_made_flag[shot_type == "2PT Field Goal"] == "shot_yes") * 2, Points_per_Shot = Total_Points_Made/Total_Shots)
+```
+
+    ## # A tibble: 5 x 4
+    ##   name           Total_Shots Total_Points_Made Points_per_Shot
+    ##   <fct>                <int>             <dbl>           <dbl>
+    ## 1 Andre Iguodala         371               442           1.19 
+    ## 2 Draymon Green          578               564           0.976
+    ## 3 Kevin Durant           915              1095           1.20 
+    ## 4 Klay Thompson         1220              1396           1.14 
+    ## 5 Stephen Curry         1250              1448           1.16
+
+<p>
+If we look at thigs from this perspective than we can see that Points\_per\_Shot of the 5 players we can see that they're all relatively close together. Kevin Durant leads with (1.2 points/shot), then Andre Iguodala (1.19 points/shot), Stephen Curry (1.16 points/shot), Klay Thompson (1.14 points/shot), and lastly Draymon Green (.976 points/shot). Only Kevin Durant, Andre Iguodala, and Stephen Curry have a better point/shot above average of (1.14)
+</p>
+<p>
 The thing to take away is that these five players have been outstanding, and great in their own way. If you want the player with the best 2 pt percent go for Andre Igudala. If you want the best 3 pt percent player go for Klay Thompson. If you want the best overall scoring percent go for Kevin Durant. If you want the player that made the most points go for Stephen Curry. The only player that stands out is Draymon Green, but not in a good way. In terms of scoring he has the lowest percent of making the basket accross all fields. He also has the second lowest attempts and second lowest made baskets accross all fields. To find the most efficent player one would have to define what they consider to be efficent.
