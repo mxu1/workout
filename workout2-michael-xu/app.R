@@ -153,7 +153,7 @@ server <- function(input, output) {
       data <- data.frame(amount,label,year)
       data <- data %>% mutate(category = factor(label))
       print(data)
-      gg <- ggplot(data,mapping = aes(x=years, y=amount, colour=category,fill=category)) + geom_line(aes(x=years,amount)) + ylab("dollars") + facet_grid(.~label) 
+      gg <- ggplot(data,mapping = aes(x=years, y=amount, colour=category,fill=category)) + geom_area(aes(fill=category)) + geom_line(aes(x=years,amount)) + ylab("dollars") + facet_grid(.~label) 
       # + scale_shape_discrete(name  ="Legend",breaks=c("regular"), labels=c("regular"))
       print(gg)
       # ggplotly()
