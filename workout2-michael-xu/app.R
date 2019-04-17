@@ -148,11 +148,12 @@ server <- function(input, output) {
       for( i in seq(1,length(FV_growing_annuity),by=1)) {
         label <- c(label, "growing_contrib")
       }
-      year <- c(year,year,year)
+      years <- c(year,year,year)
       # ggplotly()
       data <- data.frame(amount,label,year)
+      data <- data %>% mutate(category = factor(label))
       print(data)
-      gg <- ggplot(data) + geom_line(aes(x=year,amount), color = "green") + ylab("dollars") + facet_grid(.~label) 
+      gg <- ggplot(data,mapping = aes(x=years, y=amount, colour=category,fill=category)) + geom_line(aes(x=years,amount)) + ylab("dollars") + facet_grid(.~label) 
       # + scale_shape_discrete(name  ="Legend",breaks=c("regular"), labels=c("regular"))
       print(gg)
       # ggplotly()
