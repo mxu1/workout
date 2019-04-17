@@ -13,7 +13,7 @@ library(shiny)
 ui <- fluidPage(
   
   # Application title
-  titlePanel("Relative frequencies of number of blue balls"),
+  titlePanel("Investment interactive projection"),
   
   # Sidebar with a slider input for number of bins 
   fluidPage(
@@ -64,7 +64,6 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
   output$distPlot <- renderPlot({
     library("ggplot2")
     library("plotly")
