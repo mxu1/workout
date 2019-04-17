@@ -81,7 +81,11 @@ server <- function(input, output) {
     growing_annuity <- function(contrib, rate, growth, years) {
       top <- (1+rate)^years - (1+growth)^years
       bottom  <- rate - growth
-      return(contrib * top / bottom)
+      if ((bottom) == 0) {
+        return(0)
+      } else {
+        return(contrib * top / bottom)
+      }
     }
     annuity <- function(contrib,rate,years) {
       top <- (1+rate)^years - (1)
@@ -89,8 +93,9 @@ server <- function(input, output) {
       return(contrib * top / bottom)
     }
     future_value <- function(amount,rate,years) {
-      return (amount  * (1+rate)^years)
+      return (amount*(1+rate)^years)
     }
+    
     year <- c(0)
     FV_no_annuity <- c(initial)
     FV_annuity <- c(initial)
@@ -99,8 +104,8 @@ server <- function(input, output) {
     for (i in seq(1,years,by=1)) {
       year <- c(year,i)
       FV_no_annuity <- c(FV_no_annuity, future_value(initial,return,i))
-      FV_annuity <- c(FV_annuity,future_value(initial,return,i) + annuity(annual,return,i))
-      FV_growing_annuity <- c(FV_growing_annuity,future_value(initial,return,i) + growing_annuity(annual,return,growth,i))
+      FV_annuity <- c(FV_annuity, (future_value(initial,return,i) + annuity(annual,return,i)))
+      FV_growing_annuity <- c(FV_growing_annuity, (future_value(initial,return,i) + growing_annuity(annual,return,growth,i)))
     }
     modalities <- data.frame(year, FV_no_annuity,FV_annuity, FV_growing_annuity)
     colnames(modalities) = c("year","no_contrib","fixed_contrib","growing_contrib")
