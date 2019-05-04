@@ -1,0 +1,13 @@
+Package: roller
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Author: David Kim
+Description: This package builds a device with sides and probabilities for each side. It allows for the simulation of rolls of the device and also gives summary statistics for the rolls and plots the relative distributions.
+Depends: R (>= 3.5.1)
+License: N/A
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+Suggests: 
+    testthat
